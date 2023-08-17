@@ -1,9 +1,9 @@
     // import function from Product Model 
-import {getProducts, getProductId, insertProduct, updateProductById, deleteProductById } from "../model/productModel.js"
+    const Product = require ("../model/productModel.js");
 
     // Get all products
-export const showProducts = (req, res) => {
-    getProducts((err, results) => {
+exports.showProducts = (req, res) => {
+    Product.getProducts((err, results) => {
         if (err){
             res.send(err);
         } else {
@@ -13,8 +13,8 @@ export const showProducts = (req, res) => {
 }
 
     // Get single Product
-export const getProductId = (req, res) => {
-    getProductId(req.params.id, (err,results) => {
+exports.getProductId = (req, res) => {
+    Product.getProductId(req.params.id, (err,results) => {
         if (err){
             res.send(err);
         } else {
@@ -24,9 +24,9 @@ export const getProductId = (req, res) => {
 }
 
     // create a new Product 
-export const createProduct = (req, res) => {
+exports.createProduct = (req, res) => {
     const data = req.body;
-    insertProduct(data, (err, results) => {
+    Product.insertProduct(data, (err, results) => {
         if (err){
             res.send(err);
         } else {
@@ -36,10 +36,10 @@ export const createProduct = (req, res) => {
 }
 
     // Update Product 
-export const updateProduct = (req, res) => {
+exports.updateProduct = (req, res) => {
     const data = req.body;
     const id = req.params.id;
-    updateProductById(data, id, (err, results) => {
+    Product.updateProductById(data, id, (err, results) => {
         if (err){
             res.send(err);
         } else {
@@ -49,9 +49,9 @@ export const updateProduct = (req, res) => {
 }
 
     // Delete Product 
-export const deleteProduct = (req, res) => {
+exports.deleteProduct = (req, res) => {
     const id = req.params.id;
-    deleteProductById(id, (err, results) => {
+    Product.deleteProductById(id, (err, results) => {
         if (err){
             res.send(err);
         } else {

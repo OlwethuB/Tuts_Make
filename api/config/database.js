@@ -1,5 +1,5 @@
-import mysql from "mysql2";
-require(dotenv).config();
+const mysql = require('mysql2');
+require("dotenv").config();
 
 // Create the connection to database 
 
@@ -10,4 +10,4 @@ const db = mysql.createConnection({
     database: 'process.env.db_name',
 });
 
-export default db;
+// export default db;

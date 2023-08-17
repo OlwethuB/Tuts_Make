@@ -1,26 +1,26 @@
+module.exports = (app) => {
     // import express
-import express from "express";
-
-    // import function from controller
-import { showProducts, showProductById, createProduct, updateProduct, deleteProduct } from "../controller";
-
+    const express = require('express');
+      // import function from controller
+    const Product = require("../controller/Product");
+  
     // init express router
-const router = express.Router();
-
+    var router = require('express').Router();
+  
     // Get all products
-router.get('/products', showProducts);
-
-    // Get single product   
-router.get('/product/:id', showProductById);
-
+    router.get('/products', Product.showProducts),
+  
+    // Get single product
+    router.get('/product/:id', Product.getProductId),
+  
     // Create new product
-router.post('/products', createProduct);
-
-    // Update a product 
-router.put('/product/:id', updateProduct);
-
+    router.post('/products', Product.createProduct),
+  
+    // Update a product
+    router.put('/product/:id', Product.updateProduct),
+  
     // Delete a product
-router.delete('/product/:id', deleteProduct);
+    router.delete('/product/:id', Product.deleteProduct)
 
-    // export default router
-export default router;
+    app.use("/api/products", router)
+  };

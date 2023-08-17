@@ -1,8 +1,9 @@
     // Import connection
-import db from "../config";
+const db = require("../config/database");
+
 
     // Get all products
-export const getProducts = (result) => {
+getProducts = (result) => {
     db.query("SELECT * FROM product", (err, results) =>{
         if (err) {
             console.log(err);
@@ -14,7 +15,7 @@ export const getProducts = (result) => {
 }
 
     // Get single product 
-export const getProduct = (id, result) => {
+getProduct = (id, result) => {
     db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {
         if (err) {
             console.log(err);
@@ -26,7 +27,7 @@ export const getProduct = (id, result) => {
 }
 
     // Insert product into database 
-export const insertProduct = (data, result) => {
+insertProduct = (data, result) => {
     db.query("INSERT INTO product SET ?", [data], (err, results) => {
         if (err) {
             console.log(err);
@@ -38,7 +39,7 @@ export const insertProduct = (data, result) => {
 }
 
     // Update Product to database 
-export const updateProductById = (data, id, result) => {
+updateProductById = (data, id, result) => {
     db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {
         if (err) {
             console.log(err);
@@ -50,7 +51,7 @@ export const updateProductById = (data, id, result) => {
 }
 
     // Delete a product from database 
-export const deleteProductById = (id, result) => {
+deleteProductById = (id, result) => {
     db.query("DELETE FROM product WHERE product_id = ?", [id], (err, results) =>{
         if (err) {
             console.log(err);
